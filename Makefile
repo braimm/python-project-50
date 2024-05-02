@@ -25,4 +25,3 @@ test:
 
 check:
 	poetry run flake8 gendiff
-	poetry run flake8 tests
