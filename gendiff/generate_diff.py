@@ -15,7 +15,7 @@ def generate_diff(path1, path2):
     for key_from_file1, value_from_file1 in data_file1.items():
         if data_file2.get(key_from_file1):
             value_from_file2 = data_file2[key_from_file1]
-            if value_from_file1 == data_file2[key_from_file1]:
+            if value_from_file1 == value_from_file2:
                 share.append(key_from_file1)
             else:
                 diff_file1.append(key_from_file1)
