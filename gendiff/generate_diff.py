@@ -1,14 +1,12 @@
 # import os
-import json
+from gendiff.parser import get_parsed_data
 
-
-def generate_diff(path1, path2):
-    file1 = open(path1)
-    file2 = open(path2)
-    data_file1 = json.loads(file1.read())
-    data_file2 = json.loads(file2.read())
+def generate_diff(path_1, path_2):
+    data_file1 = get_parsed_data(path_1)
+    data_file2 = get_parsed_data(path_2)
     print(data_file1)
     print(data_file2)
+
     diff_file1 = []
     diff_file2 = []
     share = []
