@@ -1,28 +1,8 @@
 # import os
 from gendiff.parser import get_parsed_data
+from gendiff.generator_output import generate_output
 
-
-def generate_output(data_file1, data_file2, diff):    
-    keys_only_data_1, keys_only_data_2, keys_share = diff
-    all_keys = set(keys_only_data_1 + keys_only_data_2 + keys_share)
-    all_keys = sorted(list(all_keys))
-
-    result = '{\n'
-    for key in all_keys:
-        if key in keys_only_data_1 and key in keys_only_data_2:
-            result += f"  - {key}: {str(data_file1[key]).lower()}\n"
-            result += f"  + {key}: {str(data_file2[key]).lower()}\n"
-        elif key in keys_only_data_1:
-            result += f"  - {key}: {str(data_file1[key]).lower()}\n"
-        elif key in keys_only_data_2:
-            result += f"  + {key}: {str(data_file2[key]).lower()}\n"
-        else:
-            result += f"    {key}: {str(data_file2[key]).lower()}\n"
-    result += '}'
-    return result
-
-
-def get_diff(data_1, data_2):
+def get_diff_old(data_1, data_2):
     keys_only_data_1 = []
     keys_only_data_2 = []
     keys_share = []
@@ -51,16 +31,67 @@ def get_diff(data_1, data_2):
     print()
     print(list_viewed_keys)
     print()
- 
     return keys_only_data_1, keys_only_data_2, keys_share
     #list_viewed_keys += keys_only_data_2
+
+
+def get_sets_keys(data_1, data_2):
+    keys_only_data_1 = set()
+    keys_only_data_2 = set()
+    viewed_keys = set()
+    for key_data_1 in data_1.keys():
+        if key_data_1 not in data_2.keys():
+            keys_only_data_1.add(key_data_1)
+            viewed_keys.add(key_data_1)
+        else:
+            viewed_keys.add(key_data_1)
+
+    for key_data_2 in data_2.keys():
+        if key_data_2 not in data_1.keys():
+            keys_only_data_2.add(key_data_2)
+            viewed_keys.add(key_data_2)
+        else:
+            viewed_keys.add(key_data_2)
+    """ Удалить после завершение
+    print()                                         
+    print()
+    print(keys_only_data_1)
+    print(keys_only_data_2)
+    print()
+    print(viewed_keys)
+    print()
+    """
+    return viewed_keys, keys_only_data_1, keys_only_data_2
+
+
+def get_diff(data_1, data_2):
+    all_keys, keys_only_data_1, keys_only_data_2  = get_sets_keys(data_1, data_2)
+    diff = []
+    all_keys = sorted(list(all_keys))
+
+    for key in all_keys:
+        value_1 = data_1.get(key)
+        value_2 = data_2.get(key)
+        if key in keys_only_data_1:
+
+            diff.append({"key": key, "value": value_1, "status_tag": "only_data_1"})
+        elif key in keys_only_data_2:
+
+            diff.append({"key": key, "value": value_2, "status_tag": "only_data_2"})
+        elif isinstance(value_1, dict) and isinstance(value_2, dict):
+
+            diff.append({"key": key, "nested": get_diff(value_1, value_2), "status_tag": "nested"})
+        elif value_1 != value_2:
+
+            diff.append({"key": key, "value_1": value_1, "value_2": value_2, "status_tag": "changed"})
+        else:
+
+            diff.append({"key": key, "value": value_2, "status_tag": "non_changed"})
+    return diff
 
 
 def generate_diff(path_1, path_2):
     data_file1 = get_parsed_data(path_1)
     data_file2 = get_parsed_data(path_2)
-    print(data_file1)
-    print(data_file2)
     diff = get_diff(data_file1, data_file2)
-    output = generate_output(data_file1, data_file2, diff)
-    return output
+    return diff
