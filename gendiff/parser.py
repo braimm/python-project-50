@@ -9,6 +9,7 @@ def get_data_file(path):
     file.close()
     return data
 
+
 def get_type_file(path):
     YAML = ("yaml", "yml")
     type_file = path.split('.')
@@ -17,10 +18,10 @@ def get_type_file(path):
         return "yml"
     return 'json'
 
+
 def get_parsed_data(path):
     data = get_data_file(path)
     type_file = get_type_file(path)
     if type_file == "json":
         return json.loads(data)
     return yaml.load(data, Loader=SafeLoader)
-
