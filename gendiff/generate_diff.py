@@ -72,6 +72,5 @@ def generate_diff(path_1, path_2, format='stylish'):
     data_file1 = get_parsed_data(path_1)
     data_file2 = get_parsed_data(path_2)
     diff = get_diff(data_file1, data_file2)
-    # print(diff)
     formatted_output = generate_output(diff, format)
     return formatted_output
