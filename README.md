@@ -12,17 +12,17 @@ https://asciinema.org/a/wNkLM7Nf7ipJ2bWwPVRGaY2Pu
 [![asciicast](https://asciinema.org/a/wNkLM7Nf7ipJ2bWwPVRGaY2Pu.svg)](https://asciinema.org/a/wNkLM7Nf7ipJ2bWwPVRGaY2Pu)
 
 2. **Step 5**. Generate diff STYLISH-format for plain YAML-files:
-https://asciinema.org/a/DB5PK2dLAdxfnKfwO3nMlUOJ7
-[![asciicast](https://asciinema.org/a/DB5PK2dLAdxfnKfwO3nMlUOJ7.svg)](https://asciinema.org/a/DB5PK2dLAdxfnKfwO3nMlUOJ7)
+https://asciinema.org/a/lug7bjTjFLGpfgogjhhh3m6Kt
+[![asciicast](https://asciinema.org/a/lug7bjTjFLGpfgogjhhh3m6Kt.svg)](https://asciinema.org/a/lug7bjTjFLGpfgogjhhh3m6Kt)
 
 3. **Step 6**. Generate diff in STYLISH-format for nested YAML/JSON-files:
-https://asciinema.org/a/nT4INAMhmMTnJcB8esbmvFeYC
-[![asciicast](https://asciinema.org/a/nT4INAMhmMTnJcB8esbmvFeYC.svg)](https://asciinema.org/a/nT4INAMhmMTnJcB8esbmvFeYC)
+https://asciinema.org/a/q654jurmoURgoTPoR5EXs6zg8
+[![asciicast](https://asciinema.org/a/q654jurmoURgoTPoR5EXs6zg8.svg)](https://asciinema.org/a/q654jurmoURgoTPoR5EXs6zg8)
 
 4. **Step 7**. Generate diff in PLAIN-format for nested YAML/JSON-files:
-https://asciinema.org/a/fmPCr6Ao4U1szMdz1ojBqfMBY
-[![asciicast](https://asciinema.org/a/fmPCr6Ao4U1szMdz1ojBqfMBY.svg)](https://asciinema.org/a/fmPCr6Ao4U1szMdz1ojBqfMBY)
+https://asciinema.org/a/HC9ZsQ1g5uO3aoaZatW23rT9Y
+[![asciicast](https://asciinema.org/a/HC9ZsQ1g5uO3aoaZatW23rT9Y.svg)](https://asciinema.org/a/HC9ZsQ1g5uO3aoaZatW23rT9Y)
 
 5. **Step 8**. Generate diff in JSON-format for nested YAML/JSON-files:
-https://asciinema.org/a/KL26zMR27IzuQfXDspIRbAlyS
-[![asciicast](https://asciinema.org/a/KL26zMR27IzuQfXDspIRbAlyS.svg)](https://asciinema.org/a/KL26zMR27IzuQfXDspIRbAlyS)
+https://asciinema.org/a/YLRxfBHefsnTkaFgk0ddqEfrR
+[![asciicast](https://asciinema.org/a/YLRxfBHefsnTkaFgk0ddqEfrR.svg)](https://asciinema.org/a/YLRxfBHefsnTkaFgk0ddqEfrR)
