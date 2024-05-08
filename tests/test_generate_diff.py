@@ -10,7 +10,6 @@ def reference_stylish():
     return fixture
 
 
-
 def test_generate_diff_json(reference_stylish):
     path_file_1 = 'tests/fixtures/file1.json'
     path_file_2 = 'tests/fixtures/file2.json'
