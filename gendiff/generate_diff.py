@@ -13,9 +13,7 @@ def get_sets_keys(data_1, data_2):
 
 
 def get_diff(data_1, data_2):
-    all_keys, \
-        keys_only_data_1, \
-        keys_only_data_2 \
+    all_keys, keys_only_data_1, keys_only_data_2 \
         = get_sets_keys(data_1, data_2)
 
     diff = []
