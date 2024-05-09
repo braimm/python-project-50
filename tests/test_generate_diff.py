@@ -1,6 +1,7 @@
 import pytest
 from gendiff.generate_diff import generate_diff
 
+
 def get_content_file(path):
     file = open(path)
     content = file.read()
