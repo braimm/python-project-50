@@ -28,13 +28,16 @@ def plain(diff, name_node_parrent=''):
                 result += (f"Property '{name_node_parrent}{name_node}' "
                            f"was added with value: "
                            f"{get_formatted_value(value_1)}\n")
+
             case 'non_changed':
                 pass
+
             case 'changed':
                 result += (f"Property '{name_node_parrent}{name_node}' "
                            f"was updated. "
                            f"From {get_formatted_value(value_1)} to "
                            f"{get_formatted_value(value_2)}\n")
+
             case 'nested':
                 name_node = f'{name_node_parrent}{name_node}.'
                 result += plain(node['nested'], name_node)

@@ -1,16 +1,21 @@
-def make_sp(value):
-    return value * ' '
+def make_ident(value):
+    return (value * 4 - 2) * ' '
 
 
-def value_to_string(value, shift):
+def make_ident_bracket(value):
+    return (value * 4 - 4) * ' '
+
+
+def value_to_string(value, level):
     result = ''
     if isinstance(value, dict):
+        level += 1
         result += '{\n'
-        shift += 4
-        sp = make_sp(shift)
+        ident = make_ident(level)
+        ident_bracket = make_ident_bracket(level)
         for i in value:
-            result += f"{sp}  {i}: {value_to_string(value[i], shift)}\n"
-        result += f"{make_sp(shift - 2)}" + "}"
+            result += f"{ident}  {i}: {value_to_string(value[i], level)}\n"
+        result += f"{ident_bracket}" + "}"
     elif value is None:
         result += 'null'
     elif value in [True, False]:
@@ -20,26 +25,39 @@ def value_to_string(value, shift):
     return result
 
 
-def stylish(diff, shift=-2):
+def stylish(diff, level=0):
     result = '{\n'
+    level += 1
 
-    shift += 4
     for node in diff:
         name_node = f"{node['key']}"
         value_1 = node.get('value_1')
         value_2 = node.get('value_2')
-        sp = make_sp(shift)
-        if node['status_tag'] == 'only_data_1':
-            result += f"{sp}- {name_node}: {value_to_string(value_1, shift)}\n"
-        elif node['status_tag'] == 'only_data_2':
-            result += f"{sp}+ {name_node}: {value_to_string(value_1, shift)}\n"
-        elif node['status_tag'] == 'non_changed':
-            result += f"{sp}  {name_node}: {value_to_string(value_1, shift)}\n"
-        elif node['status_tag'] == 'changed':
-            result += f"{sp}- {name_node}: {value_to_string(value_1, shift)}\n"
-            result += f"{sp}+ {name_node}: {value_to_string(value_2, shift)}\n"
-        else:
-            result += f"{sp}  {name_node}: {stylish(node['nested'], shift)}\n"
+        ident = make_ident(level)
+        ident_bracket = make_ident_bracket(level)
 
-    result += f"{make_sp(shift - 2)}" + "}"
+        if node['status_tag'] == 'only_data_1':
+            result += (f"{ident}- {name_node}: "
+                       f"{value_to_string(value_1, level)}\n")
+
+        elif node['status_tag'] == 'only_data_2':
+            result += (f"{ident}+ {name_node}: "
+                       f"{value_to_string(value_1, level)}\n")
+
+        elif node['status_tag'] == 'non_changed':
+            result += (f"{ident}  {name_node}: "
+                       f"{value_to_string(value_1, level)}\n")
+
+        elif node['status_tag'] == 'changed':
+            result += (f"{ident}- {name_node}: "
+                       f"{value_to_string(value_1, level)}\n")
+
+            result += (f"{ident}+ {name_node}: "
+                       f"{value_to_string(value_2, level)}\n")
+
+        else:
+            result += (f"{ident}  {name_node}: "
+                       f"{stylish(node['nested'], level)}\n")
+
+    result += f"{ident_bracket}" + "}"
     return result

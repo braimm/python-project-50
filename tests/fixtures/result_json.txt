@@ -1,0 +1,116 @@
+[
+    {
+        "key": "common",
+        "nested": [
+            {
+                "key": "follow",
+                "value_1": false,
+                "status_tag": "only_data_2"
+            },
+            {
+                "key": "setting1",
+                "value_1": "Value 1",
+                "status_tag": "non_changed"
+            },
+            {
+                "key": "setting2",
+                "value_1": 200,
+                "status_tag": "only_data_1"
+            },
+            {
+                "key": "setting3",
+                "value_1": true,
+                "value_2": null,
+                "status_tag": "changed"
+            },
+            {
+                "key": "setting4",
+                "value_1": "blah blah",
+                "status_tag": "only_data_2"
+            },
+            {
+                "key": "setting5",
+                "value_1": {
+                    "key5": "value5"
+                },
+                "status_tag": "only_data_2"
+            },
+            {
+                "key": "setting6",
+                "nested": [
+                    {
+                        "key": "doge",
+                        "nested": [
+                            {
+                                "key": "wow",
+                                "value_1": "",
+                                "value_2": "so much",
+                                "status_tag": "changed"
+                            }
+                        ],
+                        "status_tag": "nested"
+                    },
+                    {
+                        "key": "key",
+                        "value_1": "value",
+                        "status_tag": "non_changed"
+                    },
+                    {
+                        "key": "ops",
+                        "value_1": "vops",
+                        "status_tag": "only_data_2"
+                    }
+                ],
+                "status_tag": "nested"
+            }
+        ],
+        "status_tag": "nested"
+    },
+    {
+        "key": "group1",
+        "nested": [
+            {
+                "key": "baz",
+                "value_1": "bas",
+                "value_2": "bars",
+                "status_tag": "changed"
+            },
+            {
+                "key": "foo",
+                "value_1": "bar",
+                "status_tag": "non_changed"
+            },
+            {
+                "key": "nest",
+                "value_1": {
+                    "key": "value"
+                },
+                "value_2": "str",
+                "status_tag": "changed"
+            }
+        ],
+        "status_tag": "nested"
+    },
+    {
+        "key": "group2",
+        "value_1": {
+            "abc": 12345,
+            "deep": {
+                "id": 45
+            }
+        },
+        "status_tag": "only_data_1"
+    },
+    {
+        "key": "group3",
+        "value_1": {
+            "deep": {
+                "id": {
+                    "number": 45
+                }
+            },
+            "fee": 100500
+        },
+        "status_tag": "only_data_2"
+    }
+]

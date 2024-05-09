@@ -1,6 +1,12 @@
 import pytest
 from gendiff.generate_diff import generate_diff
 
+def get_content_file(path):
+    file = open(path)
+    content = file.read()
+    file.close()
+    return content
+
 
 @pytest.fixture
 def reference_stylish():
@@ -30,9 +36,7 @@ def test_generate_diff_yaml(reference_stylish):
 
 
 def test_generate_diff_nested_to_stylish():
-    diff_nested_file = open('tests/fixtures/result_nested_stylish.txt')
-    reference = diff_nested_file.read()
-    diff_nested_file.close()
+    reference = get_content_file('tests/fixtures/result_nested_stylish.txt')
     path_file_1 = 'tests/fixtures/file_nested_1.json'
     path_file_2 = 'tests/fixtures/file_nested_2.json'
     result = generate_diff(path_file_1, path_file_2)
@@ -40,10 +44,16 @@ def test_generate_diff_nested_to_stylish():
 
 
 def test_generate_diff_nested_to_plain():
-    diff_nested_to_plain_file = open('tests/fixtures/result_plain.txt')
-    reference = diff_nested_to_plain_file.read()
-    diff_nested_to_plain_file.close()
+    reference = get_content_file('tests/fixtures/result_plain.txt')
     path_file_1 = 'tests/fixtures/file_nested_1.json'
     path_file_2 = 'tests/fixtures/file_nested_2.json'
     result = generate_diff(path_file_1, path_file_2, 'plain')
+    assert result == reference
+
+
+def test_generate_diff_nested_to_json():
+    reference = get_content_file('tests/fixtures/result_json.txt')
+    path_file_1 = 'tests/fixtures/file_nested_1.json'
+    path_file_2 = 'tests/fixtures/file_nested_2.json'
+    result = generate_diff(path_file_1, path_file_2, 'json')
     assert result == reference

@@ -1,4 +1,3 @@
-# import os
 from gendiff.parser import get_parsed_data
 from gendiff.formatters.generator_output import generate_output
 
@@ -37,32 +36,31 @@ def get_diff(data_1, data_2):
         value_1 = data_1.get(key)
         value_2 = data_2.get(key)
         if key in keys_only_data_1:
-
             diff.append(
                 {"key": key,
                  "value_1": value_1,
                  "status_tag": "only_data_1"})
-        elif key in keys_only_data_2:
 
+        elif key in keys_only_data_2:
             diff.append(
                 {"key": key,
                  "value_1": value_2,
                  "status_tag": "only_data_2"})
-        elif isinstance(value_1, dict) and isinstance(value_2, dict):
 
+        elif isinstance(value_1, dict) and isinstance(value_2, dict):
             diff.append(
                 {"key": key,
                  "nested": get_diff(value_1, value_2),
                  "status_tag": "nested"})
-        elif value_1 != value_2:
 
+        elif value_1 != value_2:
             diff.append(
                 {"key": key,
                  "value_1": value_1,
                  "value_2": value_2,
                  "status_tag": "changed"})
-        else:
 
+        else:
             diff.append(
                 {"key": key, "value_1": value_2, "status_tag": "non_changed"})
     return diff
