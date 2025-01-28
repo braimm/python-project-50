@@ -4,9 +4,11 @@ from yaml.loader import SafeLoader
 
 
 def get_data_file(path):
-    file = open(path)
-    data = file.read()
-    file.close()
+    # file = open(path)
+    # data = file.read()
+    # file.close()
+    with open(path, "r") as file:
+        data = file.read()
     return data
 
 
