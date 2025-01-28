@@ -6,16 +6,10 @@ def get_sets_keys(data_1, data_2):
     keys_data_1 = set(data_1.keys())
     keys_data_2 = set(data_2.keys())
     all_keys = keys_data_1 | keys_data_2
-    # keys_only_data_1 = keys_data_1 - keys_data_2
-    # keys_only_data_2 = keys_data_2 - keys_data_1
-
-    # return all_keys, keys_only_data_1, keys_only_data_2
     return all_keys
 
 
 def get_diff(data_1, data_2):
-    # all_keys, keys_only_data_1, keys_only_data_2 \
-    #     = get_sets_keys(data_1, data_2)
     all_keys = get_sets_keys(data_1, data_2)
 
     diff = []
@@ -24,14 +18,12 @@ def get_diff(data_1, data_2):
     for key in all_keys:
         value_1 = data_1.get(key)
         value_2 = data_2.get(key)
-        # if key in keys_only_data_1:
         if key in data_1.keys() and key not in data_2.keys():
             diff.append(
                 {"key": key,
                  "value_1": value_1,
                  "status_tag": "only_data_1"})
 
-        # elif key in keys_only_data_2:
         elif key in data_2.keys() and key not in data_1.keys():
             diff.append(
                 {"key": key,

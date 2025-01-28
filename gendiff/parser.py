@@ -4,19 +4,18 @@ from yaml.loader import SafeLoader
 
 
 def get_data_file(path):
-    # file = open(path)
-    # data = file.read()
-    # file.close()
     with open(path, "r") as file:
         data = file.read()
     return data
 
 
 def get_type_file(path):
-    YAML = ("yaml", "yml")
+    SUPPORT_TYPE = ("yaml", "yml", "json")
     type_file = path.split('.')
     type_file = type_file[len(type_file) - 1]
-    return "yml" if type_file in YAML else "json"
+    if type_file in SUPPORT_TYPE:
+        return type_file
+    raise ValueError(f"Unsupported format file: {type_file}")
 
 
 def get_parsed_data(path):
@@ -26,4 +25,6 @@ def get_parsed_data(path):
         case "json":
             return json.loads(data)
         case 'yml':
+            return yaml.load(data, Loader=SafeLoader)
+        case 'yaml':
             return yaml.load(data, Loader=SafeLoader)
