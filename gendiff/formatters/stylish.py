@@ -29,12 +29,12 @@ def stylish(diff, level=0):
     result = '{\n'
     level += 1
 
+    ident = make_ident(level)
+    ident_bracket = make_ident_bracket(level)
     for node in diff:
         name_node = f"{node['key']}"
         value_1 = node.get('value_1')
         value_2 = node.get('value_2')
-        ident = make_ident(level)
-        ident_bracket = make_ident_bracket(level)
 
         if node['status_tag'] == 'only_data_1':
             result += (f"{ident}- {name_node}: "

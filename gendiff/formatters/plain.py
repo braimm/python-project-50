@@ -29,8 +29,8 @@ def plain(diff, name_node_parrent=''):
                            f"was added with value: "
                            f"{get_formatted_value(value_1)}\n")
 
-            case 'non_changed':
-                pass
+            # case 'non_changed':
+            #     pass
 
             case 'changed':
                 result += (f"Property '{name_node_parrent}{name_node}' "

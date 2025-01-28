@@ -25,14 +25,14 @@ def get_diff(data_1, data_2):
         value_1 = data_1.get(key)
         value_2 = data_2.get(key)
         # if key in keys_only_data_1:
-        if key in data_1.keys() and not key in data_2.keys():
+        if key in data_1.keys() and key not in data_2.keys():
             diff.append(
                 {"key": key,
                  "value_1": value_1,
                  "status_tag": "only_data_1"})
 
         # elif key in keys_only_data_2:
-        elif key in data_2.keys() and not key in data_1.keys():
+        elif key in data_2.keys() and key not in data_1.keys():
             diff.append(
                 {"key": key,
                  "value_1": value_2,
