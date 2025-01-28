@@ -1,5 +1,5 @@
 from gendiff.parser import get_parsed_data
-from gendiff.formatters.generator_output import generate_output
+from gendiff.formatters import generate_output
 
 
 def get_sets_keys(data_1, data_2):
