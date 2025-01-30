@@ -13,6 +13,11 @@ publish:
 package-install:
 	python3 -m pip install dist/*.whl
 
+install_gendiff:
+	poetry install
+	poetry build
+	python3 -m pip install dist/*.whl
+
 package-reinstall:
 	pip install --force-reinstall dist/*.whl
 

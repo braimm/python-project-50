@@ -2,15 +2,8 @@ from gendiff.parser import get_parsed_data
 from gendiff.formatters import generate_output
 
 
-def get_sets_keys(data_1, data_2):
-    keys_data_1 = set(data_1.keys())
-    keys_data_2 = set(data_2.keys())
-    all_keys = keys_data_1 | keys_data_2
-    return all_keys
-
-
 def get_diff(data_1, data_2):
-    all_keys = get_sets_keys(data_1, data_2)
+    all_keys = set(data_1.keys()) | set(data_2.keys())
 
     diff = []
     all_keys = sorted(list(all_keys))

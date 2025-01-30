@@ -2,17 +2,13 @@ def make_ident(value):
     return (value * 4 - 2) * ' '
 
 
-def make_ident_bracket(value):
-    return (value * 4 - 4) * ' '
-
-
 def value_to_string(value, level):
     result = ''
     if isinstance(value, dict):
         level += 1
         result += '{\n'
         ident = make_ident(level)
-        ident_bracket = make_ident_bracket(level)
+        ident_bracket = ident[:-2]
         for i in value:
             result += f"{ident}  {i}: {value_to_string(value[i], level)}\n"
         result += f"{ident_bracket}" + "}"
@@ -30,7 +26,7 @@ def stylish(diff, level=0):
     level += 1
 
     ident = make_ident(level)
-    ident_bracket = make_ident_bracket(level)
+    ident_bracket = ident[:-2]
     for node in diff:
         name_node = f"{node['key']}"
         value_1 = node.get('value_1')
