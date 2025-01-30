@@ -30,7 +30,7 @@ pip install poetry
 ```bash
 git clone git@github.com:braimm/python-project-50.git
 ```
-3. Run the following command to use the package as a **CLI** utility
+3. Run inside the project's directory the following command to use the package as a **CLI** utility
 ```bash
 make install_gendiff
 ```
@@ -40,7 +40,7 @@ gendiff -h
 ```
 
 ## Available output formats and examples of work:
-1. Stylish (default option)
+1. **Stylish** (default option)
 ```bash
 gendiff filepath1.json filepath2.json
 ```
@@ -52,7 +52,7 @@ gendiff filepath1.json filepath2.json
         + timeout: 20
         + verbose: true
         }
-2. Plain
+2. **Plain**
 ```bash
 gendiff filepath1.json filepath2.json --format plain 
 ```
@@ -60,7 +60,7 @@ gendiff filepath1.json filepath2.json --format plain
         Property 'proxy' was removed
         Property 'timeout' was updated. From '50' to '20'
         Property 'verbose' was added with value: true
-3. JSON
+3. **JSON**
 ```bash
 gendiff filepath1.yaml filepath2.yaml --format json
 ```
